@@ -17,3 +17,4 @@ Thumbs.db
 /logs
 /.run/
 /temp/
+.mvn/.gradle-enterprise/gradle-enterprise-workspace-id
