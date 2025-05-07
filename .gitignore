@@ -18,3 +18,8 @@ Thumbs.db
 /.run/
 /temp/
 .mvn/.gradle-enterprise/gradle-enterprise-workspace-id
+# IDE files
+.project
+.classpath
+.factorypath
+.settings/
