@@ -130,7 +130,7 @@ public abstract class LegendSDLCTestCase implements Test
         }
         catch (AssertionError e)
         {
-            result.addFailure(this, e);
+            result.addFailure(this, new junit.framework.AssertionFailedError(e.getMessage()));
         }
         catch (Throwable t)
         {
