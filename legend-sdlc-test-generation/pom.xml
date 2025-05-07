@@ -75,6 +75,14 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
+        <!-- JUNIT -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <!-- JUNIT -->
+
         <!-- TEST -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
