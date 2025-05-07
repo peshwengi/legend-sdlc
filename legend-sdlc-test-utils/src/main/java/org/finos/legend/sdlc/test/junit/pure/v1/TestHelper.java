@@ -23,7 +23,7 @@ abstract class TestHelper
 
     protected TestHelper(int junitVersion, String entityPath)
     {
-        if ((junitVersion != 3) && (junitVersion != 4))
+        if ((junitVersion != 3) && (junitVersion != 4) && (junitVersion != 5))
         {
             throw new IllegalArgumentException("Unsupported JUnit version: " + junitVersion);
         }
@@ -47,6 +47,11 @@ abstract class TestHelper
                 org.junit.Assert.assertEquals(message, expected, actual);
                 break;
             }
+            case 5:
+            {
+                org.junit.jupiter.api.Assertions.assertEquals(expected, actual, message);
+                break;
+            }
             default:
             {
                 throw new IllegalStateException("Unsupported JUnit version: " + this.junitVersion);
@@ -68,6 +73,11 @@ abstract class TestHelper
                 org.junit.Assert.assertEquals(message, expected, actual);
                 break;
             }
+            case 5:
+            {
+                org.junit.jupiter.api.Assertions.assertEquals(expected, actual, message);
+                break;
+            }
             default:
             {
                 throw new IllegalStateException("Unsupported JUnit version: " + this.junitVersion);
@@ -87,6 +97,11 @@ abstract class TestHelper
             case 4:
             {
                 org.junit.Assert.fail(message);
+                break;
+            }
+            case 5:
+            {
+                org.junit.jupiter.api.Assertions.fail(message);
                 break;
             }
             default:

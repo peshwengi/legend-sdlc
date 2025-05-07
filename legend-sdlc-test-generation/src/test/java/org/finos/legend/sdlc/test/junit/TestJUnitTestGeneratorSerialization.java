@@ -18,12 +18,11 @@ import org.eclipse.collections.api.factory.Lists;
 import org.eclipse.collections.api.factory.SortedMaps;
 import org.eclipse.collections.impl.utility.ArrayIterate;
 import org.finos.legend.sdlc.serialization.EntityLoader;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -37,18 +36,18 @@ import java.util.stream.Stream;
 
 public class TestJUnitTestGeneratorSerialization extends AbstractGenerationTest
 {
-    @ClassRule
-    public static final TemporaryFolder TMP_DIR = new TemporaryFolder();
+    @TempDir
+    static Path TMP_DIR;
 
     private static EntityLoader ENTITY_LOADER;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp()
     {
         ENTITY_LOADER = EntityLoader.newEntityLoader(Thread.currentThread().getContextClassLoader());
     }
 
-    @AfterClass
+    @AfterAll
     public static void cleanUp() throws Exception
     {
         if (ENTITY_LOADER != null)
@@ -122,7 +121,8 @@ public class TestJUnitTestGeneratorSerialization extends AbstractGenerationTest
 
         // Generate
         JUnitTestGenerator generator = JUnitTestGenerator.newGenerator(rootPackage);
-        Path outputDir = TMP_DIR.newFolder().toPath();
+        Path outputDir = TMP_DIR.resolve("output");
+        Files.createDirectories(outputDir);
         List<Path> reportedPaths = generator.writeTestClasses(outputDir, ENTITY_LOADER.getAllEntities());
         List<Path> foundPaths = Lists.mutable.empty();
         SortedMap<String, String> actual = SortedMaps.mutable.empty();
@@ -137,7 +137,7 @@ public class TestJUnitTestGeneratorSerialization extends AbstractGenerationTest
                         foundPaths.add(path);
                         String relativePath = outputDir.relativize(path).toString().replace(path.getFileSystem().getSeparator(), "/");
                         String text = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-                        Assert.assertTrue("Generated file name exceeds 255 byte limit", path.getFileName().toString().getBytes(StandardCharsets.UTF_8).length < 255);
+                        Assertions.assertTrue(path.getFileName().toString().getBytes(StandardCharsets.UTF_8).length < 255, "Generated file name exceeds 255 byte limit");
                         actual.put(relativePath, text);
                     }
                 }
@@ -149,11 +149,11 @@ public class TestJUnitTestGeneratorSerialization extends AbstractGenerationTest
         }
 
         // Assert we found what we expected
-        Assert.assertEquals(String.valueOf(rootPackage), expected, actual);
+        Assertions.assertEquals(expected, actual, String.valueOf(rootPackage));
 
         // Assert the set of reported paths is accurate
         reportedPaths.sort(Comparator.naturalOrder());
         foundPaths.sort(Comparator.naturalOrder());
-        Assert.assertEquals(reportedPaths, foundPaths);
+        Assertions.assertEquals(reportedPaths, foundPaths);
     }
 }

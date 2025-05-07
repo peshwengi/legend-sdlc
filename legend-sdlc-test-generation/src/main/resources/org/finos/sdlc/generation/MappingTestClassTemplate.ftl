@@ -17,7 +17,7 @@ limitations under the License.
 package ${packageName};
 
 </#if>import org.finos.legend.sdlc.test.junit.pure.v1.AbstractMappingTest;<#if legacyTestCount?? && (legacyTestCount >= 1)>
-import org.junit.Test;</#if>
+import org.junit.jupiter.api.Test;</#if>
 
 public class ${className} extends AbstractMappingTest
 {

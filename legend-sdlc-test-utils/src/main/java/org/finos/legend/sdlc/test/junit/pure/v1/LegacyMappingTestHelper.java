@@ -29,6 +29,12 @@ class LegacyMappingTestHelper extends TestHelper
         super(junitVersion, entityPath);
         this.testRunner = testRunner;
     }
+    
+    LegacyMappingTestHelper(String entityPath, MappingTestRunner testRunner)
+    {
+        super(5, entityPath);
+        this.testRunner = testRunner;
+    }
 
     void setUp()
     {

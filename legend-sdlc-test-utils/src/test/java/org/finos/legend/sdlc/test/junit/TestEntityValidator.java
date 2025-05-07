@@ -16,8 +16,8 @@ package org.finos.legend.sdlc.test.junit;
 
 import org.finos.legend.sdlc.test.EntityValidator;
 import org.finos.legend.sdlc.test.PathTools;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestEntityValidator
 {
@@ -30,20 +30,20 @@ public class TestEntityValidator
 
     private void assertEntityValidationReport(EntityValidator.ValidationReport report, int expectedEntityCount, int expectedViolationCount)
     {
-        Assert.assertEquals(expectedEntityCount, report.getEntityCount());
-        Assert.assertEquals((expectedViolationCount > 0), report.hasViolations());
-        Assert.assertEquals(expectedViolationCount, report.getViolationMessages().size());
+        Assertions.assertEquals(expectedEntityCount, report.getEntityCount());
+        Assertions.assertEquals((expectedViolationCount > 0), report.hasViolations());
+        Assertions.assertEquals(expectedViolationCount, report.getViolationMessages().size());
         if (expectedViolationCount == 0)
         {
-            Assert.assertEquals("There are no violations", report.getFormattedViolationMessage());
+            Assertions.assertEquals("There are no violations", report.getFormattedViolationMessage());
         }
         else if (expectedViolationCount == 1)
         {
-            Assert.assertEquals(report.getViolationMessages().get(0), report.getFormattedViolationMessage());
+            Assertions.assertEquals(report.getViolationMessages().get(0), report.getFormattedViolationMessage());
         }
         else
         {
-            Assert.assertEquals(String.format("There are %,d violations: \n\t%s", expectedViolationCount, String.join("\n\t", report.getViolationMessages())), report.getFormattedViolationMessage());
+            Assertions.assertEquals(String.format("There are %,d violations: \n\t%s", expectedViolationCount, String.join("\n\t", report.getViolationMessages())), report.getFormattedViolationMessage());
         }
     }
 }

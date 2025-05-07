@@ -31,7 +31,7 @@ public class LegacyServiceTestCase extends LegendSDLCTestCase
     public LegacyServiceTestCase(String servicePath, PureModel pureModel, PureModelContextData pureModelContextData, Service service, Iterable<? extends PlanTransformer> planTransformers, RichIterable<? extends Root_meta_pure_extension_Extension> extensions, String pureVersion)
     {
         super(servicePath);
-        this.helper = new LegacyServiceTestHelper(3, servicePath, new ServiceTestRunner(service, null, pureModelContextData, pureModel, null, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), extensions, planTransformers, pureVersion));
+        this.helper = new LegacyServiceTestHelper(5, servicePath, new ServiceTestRunner(service, null, pureModelContextData, pureModel, null, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), extensions, planTransformers, pureVersion));
     }
 
     @Override

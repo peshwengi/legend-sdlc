@@ -15,7 +15,7 @@
 package org.finos.legend.sdlc.test.junit;
 
 import org.finos.legend.sdlc.generation.GeneratedJavaCode;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,8 +29,8 @@ abstract class AbstractGenerationTest
 {
     protected void assertGeneratedJavaCode(String expectedClassName, String expectedCode, GeneratedJavaCode generatedJavaCode)
     {
-        Assert.assertEquals(expectedClassName, generatedJavaCode.getClassName());
-        Assert.assertEquals(expectedClassName, expectedCode, generatedJavaCode.getText());
+        Assertions.assertEquals(expectedClassName, generatedJavaCode.getClassName());
+        Assertions.assertEquals(expectedCode, generatedJavaCode.getText());
     }
 
     protected String loadTextResource(String resourceName)

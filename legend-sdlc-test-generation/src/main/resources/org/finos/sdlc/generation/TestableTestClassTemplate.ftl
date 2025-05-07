@@ -17,6 +17,7 @@ limitations under the License.
 package ${packageName};
 
 </#if>import org.finos.legend.sdlc.test.junit.pure.v1.AbstractTestableTest;
+import org.junit.jupiter.api.Test;
 
 public class ${className} extends AbstractTestableTest
 {

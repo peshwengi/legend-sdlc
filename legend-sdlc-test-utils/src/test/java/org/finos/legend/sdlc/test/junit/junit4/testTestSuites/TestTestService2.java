@@ -15,8 +15,8 @@
 package org.finos.legend.sdlc.test.junit.junit4.testTestSuites;
 
 import org.finos.legend.sdlc.test.junit.pure.v1.AbstractServiceTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestTestService2 extends AbstractServiceTest
 {
@@ -24,7 +24,7 @@ public class TestTestService2 extends AbstractServiceTest
     @Override
     public void testTestable()
     {
-        AssertionError error = Assert.assertThrows(AssertionError.class, super::testTestable);
+        AssertionError error = Assertions.assertThrows(AssertionError.class, super::testTestable);
         String expected = "Test Failed for testTestSuites::TestService2:\n" +
                 "=============================================\n" +
                 "Test Failures : testSuite1.test1\n" +
@@ -47,7 +47,7 @@ public class TestTestService2 extends AbstractServiceTest
                 "  \"lastName\" : \"dummy lastname\",\n" +
                 "  \"countryCode\" : \"dummy countryCode\"\n" +
                 "}";
-        Assert.assertEquals(expected, error.getMessage());
+        Assertions.assertEquals(expected, error.getMessage());
     }
 
     @Override

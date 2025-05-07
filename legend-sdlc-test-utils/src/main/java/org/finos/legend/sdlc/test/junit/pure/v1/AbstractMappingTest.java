@@ -26,7 +26,7 @@ public abstract class AbstractMappingTest extends AbstractTestableTest
     {
         String mappingPath = getEntityPath();
         MappingTest_Legacy mappingTest = getMappingTest(mappingPath, testNum);
-        LegacyMappingTestHelper helper = new LegacyMappingTestHelper(4, mappingPath, new MappingTestRunner(getPureModel(), mappingPath, mappingTest, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), getRouterExtensions(), getPlanTransformers(), getPureVersion()));
+        LegacyMappingTestHelper helper = new LegacyMappingTestHelper(mappingPath, new MappingTestRunner(getPureModel(), mappingPath, mappingTest, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), getRouterExtensions(), getPlanTransformers(), getPureVersion()));
         helper.setUp();
         helper.runTest();
     }

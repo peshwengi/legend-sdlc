@@ -14,32 +14,52 @@
 
 package org.finos.legend.sdlc.test.junit;
 
-import junit.framework.TestCase;
+import junit.framework.Test;
+import junit.framework.TestResult;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public abstract class LegendSDLCTestCase extends TestCase
+/**
+ * This class is maintained for backward compatibility with JUnit 4.
+ * New code should use JUnit 5 directly.
+ */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public abstract class LegendSDLCTestCase implements Test
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(LegendSDLCTestCase.class);
 
     protected final String entityPath;
 
+    private String name;
+    
     protected LegendSDLCTestCase(String entityPath)
     {
-        super(entityPath);
         this.entityPath = entityPath;
+        this.name = entityPath;
+    }
+    
+    public String getName() 
+    {
+        return this.name;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
-    @Override
+    @BeforeEach
     protected final void setUp() throws Exception
     {
         long start = System.nanoTime();
         LOGGER.info("[{}] Setting up", getName());
         try
         {
-            super.setUp();
             doSetUp();
             long end = System.nanoTime();
             LOGGER.info("[{}] Finished setting up ({}s)", getName(), formatNanosDuration(end - start));
@@ -61,8 +81,8 @@ public abstract class LegendSDLCTestCase extends TestCase
         }
     }
 
-    @Override
-    protected final void runTest() throws Exception
+    @org.junit.jupiter.api.Test
+    protected final void doJUnit5Test() throws Exception
     {
         long start = System.nanoTime();
         LOGGER.info("[{}] Starting test", getName());
@@ -85,15 +105,50 @@ public abstract class LegendSDLCTestCase extends TestCase
             throw t;
         }
     }
+    
+    @Override
+    public int countTestCases()
+    {
+        return 1;
+    }
 
     @Override
+    public void run(TestResult result)
+    {
+        result.startTest(this);
+        try
+        {
+            setUp();
+            try
+            {
+                doRunTest();
+            }
+            finally
+            {
+                tearDown();
+            }
+        }
+        catch (AssertionError e)
+        {
+            result.addFailure(this, e);
+        }
+        catch (Throwable t)
+        {
+            result.addError(this, t);
+        }
+        finally
+        {
+            result.endTest(this);
+        }
+    }
+
+    @AfterEach
     protected final void tearDown() throws Exception
     {
         long start = System.nanoTime();
         LOGGER.info("[{}] Tearing down", getName());
         try
         {
-            super.tearDown();
             doTearDown();
             long end = System.nanoTime();
             LOGGER.info("[{}] Finished tearing down ({}s)", getName(), formatNanosDuration(end - start));
@@ -112,6 +167,11 @@ public abstract class LegendSDLCTestCase extends TestCase
     }
 
     protected abstract void doRunTest() throws Exception;
+    
+    protected final void runTest() throws Exception
+    {
+        doJUnit5Test();
+    }
 
     protected void doTearDown() throws Exception
     {

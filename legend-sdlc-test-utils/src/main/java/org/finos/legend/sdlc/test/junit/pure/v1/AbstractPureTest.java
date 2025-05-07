@@ -21,11 +21,11 @@ import org.finos.legend.engine.plan.generation.transformers.PlanTransformer;
 import org.finos.legend.engine.protocol.pure.m3.PackageableElement;
 import org.finos.legend.engine.protocol.pure.v1.model.context.PureModelContextData;
 import org.finos.legend.pure.generated.Root_meta_pure_extension_Extension;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 
 public abstract class AbstractPureTest
 {
-    @BeforeClass
+    @BeforeAll
     public static void initialize()
     {
         PureTestHelper.initialize();

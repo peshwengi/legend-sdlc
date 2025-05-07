@@ -180,9 +180,16 @@
 
         <!-- JUNIT -->
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit5.version}</version>
+            <scope>compile</scope> <!-- DO NOT CHANGE SCOPE -->
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>compile</scope> <!-- DO NOT CHANGE SCOPE -->
+            <version>${junit.version}</version>
+            <scope>compile</scope> <!-- DO NOT CHANGE SCOPE - needed for TestSuite -->
         </dependency>
         <!-- JUNIT -->
 

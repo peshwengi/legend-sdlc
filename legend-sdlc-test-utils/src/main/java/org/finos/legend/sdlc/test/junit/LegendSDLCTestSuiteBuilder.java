@@ -53,6 +53,10 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * This class is maintained for backward compatibility with JUnit 4.
+ * New code should use JUnit 5 directly.
+ */
 public class LegendSDLCTestSuiteBuilder
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(LegendSDLCTestSuiteBuilder.class);

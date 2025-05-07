@@ -26,7 +26,7 @@ public class TestableTestCase extends LegendSDLCTestCase
     public TestableTestCase(String testablePath, PureModel pureModel, PureModelContextData pureModelContextData)
     {
         super(testablePath);
-        this.helper = new TestableHelper(3, testablePath, new TestableRunner(), pureModel, pureModelContextData);
+        this.helper = new TestableHelper(5, testablePath, new TestableRunner(), pureModel, pureModelContextData);
     }
 
     @Override

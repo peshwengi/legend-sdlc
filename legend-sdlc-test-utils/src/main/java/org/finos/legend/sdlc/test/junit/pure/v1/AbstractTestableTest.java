@@ -15,7 +15,7 @@
 package org.finos.legend.sdlc.test.junit.pure.v1;
 
 import org.finos.legend.engine.testable.TestableRunner;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public abstract class AbstractTestableTest extends AbstractPureTest
 {

@@ -22,8 +22,8 @@ import org.eclipse.collections.api.factory.Lists;
 import org.eclipse.collections.api.factory.Maps;
 import org.eclipse.collections.api.factory.Sets;
 import org.eclipse.collections.impl.list.fixed.ArrayAdapter;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -139,14 +139,14 @@ public class TestLegendSDLCTestSuiteBuilder
             TestResult testResult = new TestResult();
             suite.run(testResult);
 
-            Assert.assertEquals(this.suiteName, suite.getName());
-            Assert.assertEquals(this.expectedTestCount, suite.testCount());
-            Assert.assertEquals(this.expectedTestCaseCount, suite.countTestCases());
+            Assertions.assertEquals(this.suiteName, suite.getName());
+            Assertions.assertEquals(this.expectedTestCount, suite.testCount());
+            Assertions.assertEquals(this.expectedTestCaseCount, suite.countTestCases());
 
-            Assert.assertEquals(suite.countTestCases(), testResult.runCount());
-            Assert.assertEquals(buildFailureMessage("erroring", testResult.errors()), this.expectedErrors, testResult.errorCount());
-            Assert.assertEquals(buildFailureMessage("failing", testResult.failures()), this.expectedFailures, testResult.failureCount());
-            Assert.assertEquals(this.expectedTestCasesByTestSuite, actualTestCasesByTestSuite);
+            Assertions.assertEquals(suite.countTestCases(), testResult.runCount());
+            Assertions.assertEquals(this.expectedErrors, testResult.errorCount(), buildFailureMessage("erroring", testResult.errors()));
+            Assertions.assertEquals(this.expectedFailures, testResult.failureCount(), buildFailureMessage("failing", testResult.failures()));
+            Assertions.assertEquals(this.expectedTestCasesByTestSuite, actualTestCasesByTestSuite);
         }
     }
 }
