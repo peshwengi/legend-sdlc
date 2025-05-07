@@ -30,7 +30,7 @@ public class LegacyMappingTestCase extends LegendSDLCTestCase
     public LegacyMappingTestCase(String mappingPath, PureModel pureModel, MappingTest_Legacy mappingTest, Iterable<? extends PlanTransformer> planTransformers, RichIterable<? extends Root_meta_pure_extension_Extension> extensions, String pureVersion)
     {
         super(mappingPath);
-        this.helper = new LegacyMappingTestHelper(3, mappingPath, new MappingTestRunner(pureModel, mappingPath, mappingTest, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), extensions, planTransformers, pureVersion));
+        this.helper = new LegacyMappingTestHelper(5, mappingPath, new MappingTestRunner(pureModel, mappingPath, mappingTest, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), extensions, planTransformers, pureVersion));
     }
 
     @Override
