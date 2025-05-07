@@ -29,7 +29,7 @@ public abstract class AbstractServiceTest extends AbstractTestableTest
         Service service = getService(servicePath);
         if (service.test != null)
         {
-            LegacyServiceTestHelper helper = new LegacyServiceTestHelper(4, servicePath, new ServiceTestRunner(service, null, getPureModelContextData(), getPureModel(), null, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), getRouterExtensions(), getPlanTransformers(), getPureVersion()));
+            LegacyServiceTestHelper helper = new LegacyServiceTestHelper(servicePath, new ServiceTestRunner(service, null, getPureModelContextData(), getPureModel(), null, PlanExecutor.newPlanExecutorBuilder().withAvailableStoreExecutors().build(), getRouterExtensions(), getPlanTransformers(), getPureVersion()));
             helper.runTest();
         }
     }
