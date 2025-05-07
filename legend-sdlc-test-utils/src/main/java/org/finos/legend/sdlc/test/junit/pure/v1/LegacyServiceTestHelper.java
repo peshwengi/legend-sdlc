@@ -36,6 +36,12 @@ class LegacyServiceTestHelper extends TestHelper
         super(junitVersion, entityPath);
         this.testRunner = testRunner;
     }
+    
+    LegacyServiceTestHelper(String entityPath, ServiceTestRunner testRunner)
+    {
+        super(5, entityPath);
+        this.testRunner = testRunner;
+    }
 
     @Override
     void runTest() throws Exception
