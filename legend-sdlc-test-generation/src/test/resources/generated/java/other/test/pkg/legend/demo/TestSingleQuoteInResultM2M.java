@@ -1,7 +1,7 @@
 package other.test.pkg.legend.demo;
 
 import org.finos.legend.sdlc.test.junit.pure.v1.AbstractMappingTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TestSingleQuoteInResultM2M extends AbstractMappingTest
 {

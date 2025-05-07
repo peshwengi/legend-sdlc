@@ -1,6 +1,7 @@
 package other.test.pkg.execution;
 
 import org.finos.legend.sdlc.test.junit.pure.v1.AbstractMappingTest;
+import org.junit.jupiter.api.Test;
 
 public class TestRelationalMapping extends AbstractMappingTest
 {

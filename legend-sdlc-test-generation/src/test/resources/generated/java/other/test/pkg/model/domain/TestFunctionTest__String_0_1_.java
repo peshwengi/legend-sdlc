@@ -1,6 +1,7 @@
 package other.test.pkg.model.domain;
 
 import org.finos.legend.sdlc.test.junit.pure.v1.AbstractTestableTest;
+import org.junit.jupiter.api.Test;
 
 public class TestFunctionTest__String_0_1_ extends AbstractTestableTest
 {

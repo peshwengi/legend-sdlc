@@ -1,6 +1,7 @@
 package other.test.pkg.testTestSuites;
 
 import org.finos.legend.sdlc.test.junit.pure.v1.AbstractServiceTest;
+import org.junit.jupiter.api.Test;
 
 public class TestMyServiceIsVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVery_38d23576 extends AbstractServiceTest
 {
