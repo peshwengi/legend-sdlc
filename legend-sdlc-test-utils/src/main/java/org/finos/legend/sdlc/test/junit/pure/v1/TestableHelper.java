@@ -48,6 +48,14 @@ class TestableHelper extends TestHelper
         this.pureModel = pureModel;
         this.pureModelContextData = pureModelContextData;
     }
+    
+    TestableHelper(String entityPath, TestableRunner testableRunner, PureModel pureModel, PureModelContextData pureModelContextData)
+    {
+        super(5, entityPath);
+        this.testableRunner = testableRunner;
+        this.pureModel = pureModel;
+        this.pureModelContextData = pureModelContextData;
+    }
 
     @Override
     void runTest() throws Exception
